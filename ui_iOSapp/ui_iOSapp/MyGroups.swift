@@ -1,24 +1,23 @@
 //
-//  TableViewController1.swift
+//  MyGroups.swift
 //  ui_iOSapp
 //
-//  Created by u on 02.02.2021.
+//  Created by u on 06.02.2021.
 //
 
 import UIKit
 
-class TableViewController1: UITableViewController {
+class MyGroups: UITableViewController {
     
-    var myFriends = [
-        "Иван Иванов",
-        "Сергей Сергеев",
-        "Петр Петров"
+    var groups: [String] = [
+        "Group 1"
+
     ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UINib(nibName: "MyFriendTableViewCell", bundle: nil), forCellReuseIdentifier: "MyFriendCell")
+        tableView.register(UINib(nibName: "MyGroupCell", bundle: nil), forCellReuseIdentifier: "MyGroupCell")
     }
 
     // MARK: - Table view data source
@@ -30,22 +29,57 @@ class TableViewController1: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return myFriends.count
+        return groups.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyFriendCell", for: indexPath) as! MyFriendTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyGroupCell", for: indexPath) as! MyGroupCell
         
-        let friend = myFriends[indexPath.row]
-        cell.FriendLabel?.text = friend
+        let group = groups[indexPath.row]
+        cell.MyGroupCellLabel?.text = group
 
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "toCollection", sender: MyFriendTableViewCell.self)
     }
+    
+    @IBAction func addGrouppppp(segue: UIStoryboardSegue) {
+        
+        
+        if segue.identifier == "addGroup" {
+            guard let allGroups = segue.source as? AllGroups else {
+                print("NOOOOOOOOO!")
+                return
+            }
+           
+            print("\(String(describing: allGroups.tableView.indexPathForSelectedRow))")
+            if let indexPath = allGroups.tableView.indexPathForSelectedRow {
+                
+                print("UNWIIIIIIND!")
+
+                let group = allGroups.groups[indexPath.row]
+                print("\(group)")
+                
+                if !groups.contains(group) {
+                    groups.append(group)
+                    tableView.reloadData()
+                }
+            } else {
+                print("NONONO")
+            }
+        }
+    }
+    /*
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+
+        return cell
+    }
+    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -55,17 +89,17 @@ class TableViewController1: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            //tableView.deleteRows(at: [indexPath], with: .fade)
+            groups.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+ 
 
     /*
     // Override to support rearranging the table view.
