@@ -1,0 +1,26 @@
+//
+//  MyGroupCell.swift
+//  ui_iOSapp
+//
+//  Created by u on 06.02.2021.
+//
+
+import UIKit
+
+class MyGroupCell: UITableViewCell {
+    @IBOutlet var MyGroupCellImage: UIImageView!
+    
+    @IBOutlet var MyGroupCellLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
+}
