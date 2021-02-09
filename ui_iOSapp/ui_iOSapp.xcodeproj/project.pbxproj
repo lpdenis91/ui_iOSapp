@@ -27,6 +27,10 @@
 		145208DE25CE10CE000917D0 /* AllGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145208DD25CE10CE000917D0 /* AllGroups.swift */; };
 		145208E425CE134E000917D0 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145208E225CE134D000917D0 /* MyCollectionViewCell.swift */; };
 		145208E525CE134E000917D0 /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 145208E325CE134D000917D0 /* MyCollectionViewCell.xib */; };
+		145208EB25D28121000917D0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145208EA25D28120000917D0 /* User.swift */; };
+		145208F025D2819A000917D0 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145208EF25D2819A000917D0 /* Group.swift */; };
+		145208F525D2A748000917D0 /* FriendAvatarUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145208F425D2A748000917D0 /* FriendAvatarUIView.swift */; };
+		1452090225D2CF11000917D0 /* LikeZoneUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1452090125D2CF11000917D0 /* LikeZoneUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +77,10 @@
 		145208DD25CE10CE000917D0 /* AllGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroups.swift; sourceTree = "<group>"; };
 		145208E225CE134D000917D0 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		145208E325CE134D000917D0 /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
+		145208EA25D28120000917D0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		145208EF25D2819A000917D0 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		145208F425D2A748000917D0 /* FriendAvatarUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAvatarUIView.swift; sourceTree = "<group>"; };
+		1452090125D2CF11000917D0 /* LikeZoneUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeZoneUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +131,7 @@
 		1452086825C40C91000917D0 /* ui_iOSapp */ = {
 			isa = PBXGroup;
 			children = (
+				145208E925D28100000917D0 /* Model */,
 				145208BD25CDEEBF000917D0 /* Cells */,
 				1452086925C40C91000917D0 /* AppDelegate.swift */,
 				1452086B25C40C91000917D0 /* SceneDelegate.swift */,
@@ -135,6 +144,8 @@
 				145208C525CE0333000917D0 /* CollectionViewController.swift */,
 				145208D125CE0E4E000917D0 /* MyGroups.swift */,
 				145208DD25CE10CE000917D0 /* AllGroups.swift */,
+				145208F425D2A748000917D0 /* FriendAvatarUIView.swift */,
+				1452090125D2CF11000917D0 /* LikeZoneUIView.swift */,
 			);
 			path = ui_iOSapp;
 			sourceTree = "<group>";
@@ -170,6 +181,15 @@
 				145208E325CE134D000917D0 /* MyCollectionViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		145208E925D28100000917D0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				145208EA25D28120000917D0 /* User.swift */,
+				145208EF25D2819A000917D0 /* Group.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,13 +327,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				145208E425CE134E000917D0 /* MyCollectionViewCell.swift in Sources */,
+				1452090225D2CF11000917D0 /* LikeZoneUIView.swift in Sources */,
 				145208C625CE0333000917D0 /* CollectionViewController.swift in Sources */,
 				145208AB25C41F49000917D0 /* LoginFormController.swift in Sources */,
+				145208F525D2A748000917D0 /* FriendAvatarUIView.swift in Sources */,
 				145208B625C947E9000917D0 /* TableViewController1.swift in Sources */,
 				1452086A25C40C91000917D0 /* AppDelegate.swift in Sources */,
 				145208C025CDEFB2000917D0 /* MyFriendTableViewCell.swift in Sources */,
+				145208F025D2819A000917D0 /* Group.swift in Sources */,
 				145208DE25CE10CE000917D0 /* AllGroups.swift in Sources */,
 				145208CC25CE0CCB000917D0 /* MyGroupCell.swift in Sources */,
+				145208EB25D28121000917D0 /* User.swift in Sources */,
 				1452086C25C40C91000917D0 /* SceneDelegate.swift in Sources */,
 				145208D225CE0E4E000917D0 /* MyGroups.swift in Sources */,
 				145208D825CE10B9000917D0 /* AllGroupsCell.swift in Sources */,

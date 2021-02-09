@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,37 +18,59 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QyB-4V-53k">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cLK-Ma-Lkx" customClass="FriendAvatarUIView" customModule="ui_iOSapp" customModuleProvider="target">
                         <rect key="frame" x="16" y="10" width="50" height="50"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="026-cn-WbE">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="Uc8-VC-62g"/>
-                            <constraint firstAttribute="height" constant="50" id="zPE-9Z-ZmK"/>
+                            <constraint firstAttribute="width" constant="50" id="Zf2-z2-whZ"/>
+                            <constraint firstAttribute="height" constant="50" id="j4D-ua-i9E"/>
                         </constraints>
-                    </imageView>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="25"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                <size key="value" width="0.0" height="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="imageView" destination="026-cn-WbE" id="fNn-Rg-qA9"/>
+                        </connections>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YbE-eN-cnF">
-                        <rect key="frame" x="86" y="24" width="218" height="22"/>
+                        <rect key="frame" x="86" y="24" width="41.5" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="QyB-4V-53k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="2f6-Mv-O4s"/>
                     <constraint firstItem="YbE-eN-cnF" firstAttribute="top" relation="lessThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="26" id="3JO-PA-gw1"/>
-                    <constraint firstItem="YbE-eN-cnF" firstAttribute="leading" secondItem="QyB-4V-53k" secondAttribute="trailing" constant="20" id="6ew-yR-E7C"/>
-                    <constraint firstAttribute="bottom" secondItem="QyB-4V-53k" secondAttribute="bottom" constant="10" id="RJk-ik-zFW"/>
+                    <constraint firstItem="cLK-Ma-Lkx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="61a-MJ-G2k"/>
+                    <constraint firstItem="YbE-eN-cnF" firstAttribute="centerY" secondItem="cLK-Ma-Lkx" secondAttribute="centerY" id="94N-Gv-N9n"/>
                     <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="YbE-eN-cnF" secondAttribute="bottom" constant="24" id="YqE-ZQ-Gj9"/>
-                    <constraint firstAttribute="trailing" secondItem="YbE-eN-cnF" secondAttribute="trailing" constant="16" id="kjU-zN-P6s"/>
-                    <constraint firstItem="QyB-4V-53k" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="nww-PS-E2B"/>
-                    <constraint firstItem="YbE-eN-cnF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="y1m-J3-xxT"/>
+                    <constraint firstAttribute="bottom" secondItem="cLK-Ma-Lkx" secondAttribute="bottom" constant="10" id="gnw-ke-beQ"/>
+                    <constraint firstItem="YbE-eN-cnF" firstAttribute="leading" secondItem="cLK-Ma-Lkx" secondAttribute="trailing" constant="20" id="nJe-WQ-re9"/>
+                    <constraint firstItem="cLK-Ma-Lkx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="yuR-u6-jyM"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="FriendImage" destination="QyB-4V-53k" id="Z8k-Zm-KJN"/>
+                <outlet property="FriendImage" destination="026-cn-WbE" id="RWg-1O-uNV"/>
                 <outlet property="FriendLabel" destination="YbE-eN-cnF" id="Fvw-JU-StR"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="88.392857142857139"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

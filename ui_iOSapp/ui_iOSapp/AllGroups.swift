@@ -9,13 +9,18 @@ import UIKit
 
 class AllGroups: UITableViewController {
     
-    var groups: [String] = [
-        "Group A",
-        "Group B",
-        "Group C",
+//    var groups: [String] = [
+//        "Group A",
+//        "Group B",
+//        "Group C",
+//
+//    ]
 
+    var groups = [
+        Group(id: 2, name: "Group 2", isMyGroup: false, groupAvatar: "pencil"),
+        Group(id: 3, name: "Group 3", isMyGroup: false, groupAvatar: "pencil.slash")
     ]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,7 +43,8 @@ class AllGroups: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AllGroupCell", for: indexPath) as! AllGroupsCell
         
         let group = groups[indexPath.row]
-        cell.AllGroupsCellLabel?.text = group
+        cell.AllGroupsCellLabel?.text = group.name
+        cell.AllGroupsCellImage.image = UIImage(systemName: group.groupAvatar)
 
         return cell
     }

@@ -10,6 +10,8 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class MyCollectionViewController: UICollectionViewController {
+    
+    var data: User!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,9 +20,14 @@ class MyCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MyFriendImageCollection")
+//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MyFriendImageCell")
+        
+        collectionView.register(UINib(nibName: "MyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MyFriendImageCell")
 
         // Do any additional setup after loading the view.
+        
+        self.title = "\(data.name) \(data.surName)"
+        
     }
 
     /*
@@ -43,11 +50,19 @@ class MyCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 1
+        return data.photoCollection.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyFriendImageCollection", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyFriendImageCell", for: indexPath) as! MyCollectionViewCell
+        
+        for photo in data.photoCollection {
+            cell.ImageCollectionViewCell.image = UIImage(systemName: photo)
+            cell.LikeStatus.image = UIImage(systemName: "heart")
+            cell.LikeStatus.tintColor = .gray
+            cell.LikeCounter.text = ""
+        }
+        //cell.ImageCollectionViewCell.image = UIImage(systemName: data.userAvatar)
     
         // Configure the cell
     

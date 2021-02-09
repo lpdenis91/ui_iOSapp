@@ -8,7 +8,13 @@
 import UIKit
 
 class MyCollectionViewCell: UICollectionViewCell {
-    @IBOutlet var MyCollectionViewCellImage: UIImageView!
+    
+    @IBOutlet var ImageCollectionViewCell: UIImageView!
+    @IBOutlet var LikeCounter: UILabel!
+    
+
+
+    @IBOutlet var LikeStatus: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

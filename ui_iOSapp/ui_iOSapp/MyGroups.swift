@@ -9,11 +9,15 @@ import UIKit
 
 class MyGroups: UITableViewController {
     
-    var groups: [String] = [
-        "Group 1"
+//    var groups: [String] = [
+//        "Group 1"
+//
+//    ]
 
+    var groups = [
+        Group(id: 1, name: "Group 1", isMyGroup: true, groupAvatar: "circle")
     ]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,7 +40,8 @@ class MyGroups: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyGroupCell", for: indexPath) as! MyGroupCell
         
         let group = groups[indexPath.row]
-        cell.MyGroupCellLabel?.text = group
+        cell.MyGroupCellLabel?.text = group.name
+        cell.MyGroupCellImage.image = UIImage(systemName: group.groupAvatar)
 
         return cell
     }
@@ -50,24 +55,18 @@ class MyGroups: UITableViewController {
         
         if segue.identifier == "addGroup" {
             guard let allGroups = segue.source as? AllGroups else {
-                print("NOOOOOOOOO!")
                 return
             }
            
-            print("\(String(describing: allGroups.tableView.indexPathForSelectedRow))")
             if let indexPath = allGroups.tableView.indexPathForSelectedRow {
                 
-                print("UNWIIIIIIND!")
-
                 let group = allGroups.groups[indexPath.row]
-                print("\(group)")
                 
-                if !groups.contains(group) {
+                if !groups.contains(where: { $0.name == group.name }) {
                     groups.append(group)
                     tableView.reloadData()
+                    print(MyGroups.self)
                 }
-            } else {
-                print("NONONO")
             }
         }
     }

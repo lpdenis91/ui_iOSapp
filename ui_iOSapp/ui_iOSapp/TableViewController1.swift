@@ -9,17 +9,26 @@ import UIKit
 
 class TableViewController1: UITableViewController {
     
+//    var myFriends = [
+//        "Иван Иванов",
+//        "Сергей Сергеев",
+//        "Петр Петров"
+//    ]
+
     var myFriends = [
-        "Иван Иванов",
-        "Сергей Сергеев",
-        "Петр Петров"
+        User(id: 1, name: "Ivan", surName: "Ivanov", isMyFrined: true, userAvatar: "square.and.arrow.up", photoCollection: ["square.and.arrow.down","square.and.arrow.down","square.and.arrow.down","square.and.arrow.down","square.and.arrow.down"]),
+        User(id: 2, name: "Petr", surName: "Petrov", isMyFrined: true, userAvatar: "square.and.arrow.down", photoCollection: ["square.and.arrow.up","square.and.arrow.up","square.and.arrow.up","square.and.arrow.up","square.and.arrow.up",])
     ]
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.register(UINib(nibName: "MyFriendTableViewCell", bundle: nil), forCellReuseIdentifier: "MyFriendCell")
+        
+
     }
+    
 
     // MARK: - Table view data source
 
@@ -37,14 +46,25 @@ class TableViewController1: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyFriendCell", for: indexPath) as! MyFriendTableViewCell
         
         let friend = myFriends[indexPath.row]
-        cell.FriendLabel?.text = friend
+        cell.FriendLabel.text = "\(friend.name) \(friend.surName)"
+        cell.FriendImage.image = UIImage(systemName: friend.userAvatar)
+        
+        
+
+        
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "toCollection", sender: MyFriendTableViewCell.self)
+        //performSegue(withIdentifier: "toCollection", sender: MyFriendTableViewCell.self)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MyVCFriendIdentifier") as! MyCollectionViewController
+        vc.data = self.myFriends[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
 
     /*
